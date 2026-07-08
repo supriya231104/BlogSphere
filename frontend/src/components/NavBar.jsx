@@ -92,8 +92,14 @@ function NavBar() {
           <div className="right flex items-center gap-3 md:gap-5 flex-shrink-0">
             <div
               onClick={() => {
-                setIsAuthModalOpen(true);
+                if (!token) {
+                  setIsAuthModalOpen(true);
+                  return
+                  
+                }
+                navigate('/add-blog')
               }}
+
               className="flex items-center gap-2 text-gray-500 hover:text-gray-900 transition-colors"
             >
               <FiEdit className="w-5 h-5" />

@@ -74,9 +74,9 @@ function BlogPage() {
 
       setBlogId(res?.data?.blog?.desired_blog?._id);
 
-      toast.success("Blog fetched successfully");
+     
     } catch (error) {
-      console.log(error);
+     
       toast.error(error.response?.data?.message);
     }finally{
       setLoading(false)
@@ -117,7 +117,7 @@ function BlogPage() {
         }
       );
 
-      toast.success(res?.data?.message);
+     
       if (res?.data?.isFollowed) {
         disptach(
           setFollowingsList([
@@ -206,7 +206,7 @@ function BlogPage() {
             </p>
             <div
               onClick={() => {
-                console.log("follow ji");
+              
 
                 if (!token) {
                   setIsAuthModalOpen(true)

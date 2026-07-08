@@ -33,7 +33,7 @@ try {
 async function Login(req, res, next) {
     try {
         const { email, password } = req.body;
-        console.log(req.body);
+     
 
 
         if (!email || !password) {
@@ -286,7 +286,7 @@ async function updateUser(req, res, next) {
         }
         let req_user = await user.findById(id)
         let profilePic, profilePicId
-
+       
         if (shouldDelete) {
 
             if (req_user?.profilePicId) {
@@ -296,6 +296,7 @@ async function updateUser(req, res, next) {
             req_user.profilePicId = null
         }
         if (image) {
+          
 
             if (req_user?.profilePicId) {
                 await deleteImageFromCloudinary(req_user?.profilePicId)
@@ -725,10 +726,10 @@ async function getFollowingsDetails(req, res, next) {
 async function getUserWithUserName(req, res) {
     try {
         const { username } = req.params
-        console.log(username);
+        
 
         const req_user = await user.findOne({ userName: username })
-        console.log(req_user);
+       
         if (!req_user) {
             return res.status(404).json({
                 success: false,

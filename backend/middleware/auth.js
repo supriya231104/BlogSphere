@@ -32,9 +32,9 @@ function verifyUser(req, res, next) {
             });
         }
 
-        console.log("Strict auth: everything is fine");
+       
         req.user = user.id;
-        console.log(req.user);
+       
         next(); // Call next inside the try block or right after it safely
     } catch (error) {
         return res.status(500).json({
@@ -47,7 +47,7 @@ function verifyUser(req, res, next) {
 // 2. Optional Authentication Middleware
 function verifyUserOptional(req, res, next) {
     const authorizationHeader = req.headers.authorization;
-    // console.log("Optional Auth Header:", authorizationHeader);
+    
 
     if (!authorizationHeader) {
         req.user = undefined;

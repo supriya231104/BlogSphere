@@ -44,7 +44,7 @@ async function toggleLike(req, res) {
 async function createBlog(req, res, next) {
 
     const image = req?.files?.image?.[0]
-    console.log(image);
+  
     const images = req.files?.images
 
     if (!image) {
@@ -60,7 +60,7 @@ async function createBlog(req, res, next) {
         const content = JSON.parse(req.body.content)
         const creator = req.user
         const tags = JSON.parse(req.body.tags)
-        console.log(tags);
+     
 
 
 
@@ -229,8 +229,7 @@ async function updateBlog(req, res, next) {
                 message: "Blog not found"
             });
         }
-        console.log(creator, req_blog.creator);
-        console.log(req_blog?._id);
+       
 
         if (!(creator == req_blog.creator)) {
             return res.status(403).json({
@@ -435,7 +434,7 @@ async function getDraftBlogs(req, res, next) {
 
     try {
         let userId = req.user
-        console.log(userId);
+      
 
         if (!valiDateId(userId)) {
             return res.status(400).json({
@@ -446,7 +445,7 @@ async function getDraftBlogs(req, res, next) {
 
         }
         let blogs = await blog.find({ creator: userId,draft:true }).populate('creator')
-        console.log(blogs);
+       
 
         return res.status(200).json({
             success: true,
@@ -536,7 +535,7 @@ async function getLikedBlogsId(req,res) {
         const blogs=Liked_blogs?.map((one)=>{
             return one?.blog
         })
-        console.log(Liked_blogs);
+      
         return res.status(200).json({
             success:true,
             blogs,
@@ -577,7 +576,7 @@ async function getLikedBlogs(req,res,next) {
         const blogs=Liked_blogs?.map((one)=>{
             return one?.blog
         })
-        console.log(Liked_blogs);
+        
         return res.status(200).json({
             success:true,
             blogs,

@@ -85,7 +85,7 @@ function ProfilePage() {
         return one?.followingId === res?.data?.user?._id;
       });
       setIsFollowing(val);
-      toast.success(res?.data?.message);
+     
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
@@ -110,7 +110,7 @@ function ProfilePage() {
 
       setFollowings(res?.data?.follwings);
 
-      toast.success(res?.data?.message);
+    
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
@@ -133,7 +133,7 @@ function ProfilePage() {
 
       setBlogs(res?.data?.blogs);
       setIsLoading(false);
-      toast.success(res?.data?.message);
+      
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
@@ -151,7 +151,7 @@ function ProfilePage() {
         }
       );
 
-      toast.success(res?.data?.message);
+     
       if (res?.data?.isFollowed) {
         setFollowerCount((prev) => prev + 1);
         dispatch(setFollowingsList([...followingsList, { followingId: id }]));

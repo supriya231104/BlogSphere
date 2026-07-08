@@ -14,10 +14,10 @@ function verifyJwtToken(token) {
       
       
       let obj= jwt.verify(token,process.env.JWT_SECRET )
-      // console.log("hello ji",obj);
+   
       return obj
    } catch (error) {
-      // console.log("JWT VERIFY ERROR:", error.message)
+      
      return null
    }
 }

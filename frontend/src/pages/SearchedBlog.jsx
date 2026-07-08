@@ -39,7 +39,7 @@ function SearchedBlog() {
       );
    
       setSavedBlogs(res.data.blogs);
-      toast.success("Saved Blogs fetched");
+      
     } catch (error) {
     
       toast.error(

@@ -65,7 +65,7 @@ function SingleComment({ lastEle,data, blogId, SetCommentCount, setComments, dep
         })
        
         setReplies(res?.data?.comments)
-        toast.success("Replies fetched successfully")
+       
       } catch (error) {
          toast.error(`${error?.response?.data?.message}`)
        }
@@ -109,7 +109,7 @@ function SingleComment({ lastEle,data, blogId, SetCommentCount, setComments, dep
         });
       }
 
-      toast.success(res?.data?.message);
+     
     } catch (error) {
       toast.error(error.response.data.message);
     }
@@ -117,7 +117,7 @@ function SingleComment({ lastEle,data, blogId, SetCommentCount, setComments, dep
   async function handleEditComment() {
     try {
       if (!editText.trim()) {
-        toast.error("Dont keep comment empty ");
+   
         setEditText((prev) => {
           if (!prev) {
             return data.comment;
@@ -141,7 +141,7 @@ function SingleComment({ lastEle,data, blogId, SetCommentCount, setComments, dep
         }
       );
      
-      toast.success("Comment edited");
+     
       setShowPop(false);
     } catch (error) {
       toast.error(error.response.data.message);
@@ -163,7 +163,7 @@ function SingleComment({ lastEle,data, blogId, SetCommentCount, setComments, dep
       }
     );
    
-    toast.success("Reply created successfully")
+   
     setReplyCount((prev)=>prev+1)
     setReplies((prev)=>[...prev,res?.data?.comment])
     SetReplyText("")

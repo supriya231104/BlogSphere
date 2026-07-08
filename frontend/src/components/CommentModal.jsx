@@ -39,7 +39,7 @@ function CommentModal({
         }
       );
       SetCommentCount((prev) => prev + 1);
-      toast.success("Created comment successfully");
+     
 
       let comment = res?.data?.comment;
       setComments((prev) => {

@@ -43,7 +43,7 @@ function BlogCard({ one = {}, isInitiallySaved, isLoading, isInitiallyLiked }) {
       );
 
       setisBlogSaved((prev) => !prev);
-      toast.success(res?.data?.message);
+      
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }

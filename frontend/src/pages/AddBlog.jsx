@@ -156,7 +156,7 @@ function AddBlog() {
       });
       setPreviewUrl(res?.data?.blog?.desired_blog?.image);
 
-      toast.success("Blog fetched successfully");
+     
     } catch (error) {
     
       toast.error(error.response.data.message);

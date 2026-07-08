@@ -9,7 +9,7 @@ function VerifyUser() {
     async function verifyUser() {
         try {
             let res=await axios.get(`${import.meta.env.VITE_BACKEND_URL}/verify/${verificationToken}`)
-            toast.success(`${res?.data?.message}`)
+          
             navigate("/signin")
         } catch (error) {
             toast.error(`${error?.response?.data?.message}`)

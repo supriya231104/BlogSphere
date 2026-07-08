@@ -23,7 +23,7 @@ function EditProfilePage() {
   
   const {
     token,
-    id: userId,
+    id,
     userName,
     photoURL,
   } = useSelector((state) => state.UserSlice);
@@ -44,7 +44,7 @@ function EditProfilePage() {
 
       setUserData(data);
       setInitialData(data);
-      toast.success(res?.data?.message);
+     
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
@@ -91,7 +91,7 @@ function EditProfilePage() {
       );
   
       const { email, userName, name, profilePic: photoURL } = res?.data?.user;
-      dispatch(setUser({ email, userName, name, photoURL, token, id: userId }));
+      dispatch(setUser({ email, userName, name, photoURL, token, id }));
       toast.success(res?.data?.message);
     } catch (error) {
       toast.error(error?.response?.data?.message);

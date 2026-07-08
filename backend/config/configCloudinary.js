@@ -11,9 +11,9 @@ function configCloudinary() {
             api_secret: process.env.CLOUDINARY_API_SECRET
         });
 
-        console.log("Successfully configured Cloudinary");
+        // console.log("Successfully configured Cloudinary");
     } catch (error) {
-        console.log("Oops! Something went wrong while configuring Cloudinary");
+        // console.log("Oops! Something went wrong while configuring Cloudinary");
     }
 }
 

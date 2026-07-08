@@ -34,7 +34,7 @@ function HomePage() {
         }
       );
 
-      toast.success(res?.data?.message);
+     
       disptach(setFollowingsList(res?.data?.follwings));
     } catch (error) {
       toast.error(error?.response?.data?.message);
@@ -53,7 +53,7 @@ function HomePage() {
 
       setSavedBlogs(res.data.blogs);
 
-      toast.success("Saved Blogs fetched");
+     
     } catch (error) {
       toast.error(
         error.response?.data?.message || "Error fetching saved blogs"
@@ -79,7 +79,7 @@ function HomePage() {
       );
       setListOfLikedBlogs(res?.data?.blogs);
 
-      toast.success(res?.data?.message);
+     
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }

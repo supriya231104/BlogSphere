@@ -103,13 +103,13 @@ function AuthForm({ type }) {
     
     try {
       let data = await googleAuth();
-      console.log(data);
+ 
       if (!data) {
         throw new Error(data || "Google authentication failed");
         
       }
       const {user,idToken}=data
-      console.log(idToken);
+    
       let res = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/google-auth`,
         {

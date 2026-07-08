@@ -6,9 +6,10 @@ async function dbConnect() {
     try {
         await mongoose.connect(`${process.env.MONGODB_URL}`);  
 
-        console.log("Database is connected successfully");  
+        // console.log("Database is connected successfully");  
     } catch (error) {
-        console.log("error occurred", error.message);
+        throw new Error(error)
+        // console.log("error occurred", error.message);
     }
 }
 export default dbConnect
