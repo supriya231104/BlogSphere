@@ -11,7 +11,7 @@ import { configCloudinary } from "./config/configCloudinary.js";
 dotenv.config()
 const app = express();
 app.use(cors({origin:process.env.FRONTEND_URL}));
-dotenv.config()
+
 const PORT = process.env.PORT || 3000
 
 
