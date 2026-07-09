@@ -24,9 +24,9 @@ try {
             serviceAccount
         )
     });
-    console.log("Firebase Admin SDK successfully initialized!");
+    // console.log("Firebase Admin SDK successfully initialized!");
 } catch (error) {
-    console.error("Firebase authentication failed...")
+    // console.error("Firebase authentication failed...")
 
 }
 

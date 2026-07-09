@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineLike } from "react-icons/ai";
 import { MdComment } from "react-icons/md";
@@ -8,9 +8,10 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { AiFillLike } from "react-icons/ai";
+import AuthModal from "../utils/AuthModal";
 
 function BlogCard({ one = {}, isInitiallySaved, isLoading, isInitiallyLiked }) {
-  
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
   const { token } = useSelector((slice) => slice.UserSlice);
 
@@ -29,7 +30,11 @@ function BlogCard({ one = {}, isInitiallySaved, isLoading, isInitiallyLiked }) {
   const name = creator?.name || "Unknown";
   const navigate = useNavigate();
   const [isBlogSaved, setisBlogSaved] = useState(isInitiallySaved);
-
+  useEffect(() => {
+    return () => {
+      setIsAuthModalOpen(false);
+    };
+  }, []);
   async function handleSaveBlog(blogId) {
     try {
       let res = await axios.patch(
@@ -43,7 +48,7 @@ function BlogCard({ one = {}, isInitiallySaved, isLoading, isInitiallyLiked }) {
       );
 
       setisBlogSaved((prev) => !prev);
-      
+     
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
@@ -127,15 +132,19 @@ function BlogCard({ one = {}, isInitiallySaved, isLoading, isInitiallyLiked }) {
           <div
             onClick={(e) => {
               e.stopPropagation();
+
+              if (!token) {
+                setIsAuthModalOpen(true);
+                return;
+              }
               handleSaveBlog(_id);
             }}
           >
-            {token &&
-              (isBlogSaved ? (
-                <IoBookmark className="w-5 h-5  maxfourfifty:w-4  maxfourfifty:h-4" />
-              ) : (
-                <IoBookmarkOutline className="w-5 h-5 maxfourfifty:w-4 maxfourfifty:h-4 " />
-              ))}
+            {isBlogSaved ? (
+              <IoBookmark className="w-5 h-5  maxfourfifty:w-4  maxfourfifty:h-4" />
+            ) : (
+              <IoBookmarkOutline className="w-5 h-5 maxfourfifty:w-4 maxfourfifty:h-4 " />
+            )}
           </div>
         </div>
       </div>
@@ -148,6 +157,7 @@ function BlogCard({ one = {}, isInitiallySaved, isLoading, isInitiallyLiked }) {
           alt={title}
         />
       </div>
+      <AuthModal isAuthModalOpen={isAuthModalOpen} setIsAuthModalOpen={setIsAuthModalOpen}></AuthModal>
     </div>
   );
 }

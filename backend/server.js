@@ -7,10 +7,10 @@ import userRouter from "./routes/userRoutes.js";
 import blogRouter from "./routes/blogRoutes.js"
 import commentRouter from "./routes/commentRoute.js"
 import { configCloudinary } from "./config/configCloudinary.js";
-import crypto from 'crypto'
 
+dotenv.config()
 const app = express();
-app.use(cors());
+app.use(cors({origin:process.env.FRONTEND_URL}));
 dotenv.config()
 const PORT = process.env.PORT || 3000
 
