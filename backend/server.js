@@ -10,7 +10,23 @@ import { configCloudinary } from "./config/configCloudinary.js";
 
 dotenv.config()
 const app = express();
-app.use(cors({origin:process.env.FRONTEND_URL}));
+// app.use(cors({origin:process.env.FRONTEND_URL}));
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://blogsphere-ecru.vercel.app",
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      return callback(null,false);
+    },
+    credentials: true,
+  })
+);
 
 const PORT = process.env.PORT || 3000
 
